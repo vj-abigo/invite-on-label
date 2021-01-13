@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "ncc build index.js"
+    "build": "ncc build index.js",
+    "prettier": "prettier \"*.{js,json}\"",
+    "format": "npm run prettier -- --write",
+    "lint": "eslint src",
+    "lint:fix": "npm run lint -- --fix",
+    "validate": "npm run prettier -- --list-different && npm run lint"
   },
   "repository": {
     "type": "git",
@@ -22,6 +27,23 @@
     "@actions/github": "^4.0.0"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.27.0"
+    "@vercel/ncc": "^0.27.0",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "husky": "^4.3.7",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "npx prettier --write",
+      "eslint src/*.js --fix-dry-run"
+    ]
   }
 }
