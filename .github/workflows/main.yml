@@ -12,7 +12,7 @@ jobs:
       - name: Run the local file
         uses: ./
         with:
-          organization: EddieJaoudeCommunity
+          organization: vj-abigo
           label: invite me
         env:
            ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
