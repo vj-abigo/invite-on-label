@@ -7,7 +7,7 @@ const main = async () => {
         if (!ACCESS_TOKEN)
             return core.setFailed('ENV required and not supplied: ACCESS_TOKEN')
 
-        const octokit = new github.GitHub(ACCESS_TOKEN)
+        const octokit = github.getOctokit(ACCESS_TOKEN)
 
         const payload = github.context.payload
         const invitee_id = payload.issue.user.id
@@ -16,12 +16,12 @@ const main = async () => {
         const org = core.getInput('organization', { required: true })
         const label = core.getInput('label', { required: true })
 
-        if (currentLabel === label) {            
-            try{
+        if (currentLabel === label) {
+            try {
                 await octokit.orgs.checkMembership({
                     org: org,
                     username: payload.issue.user.login
-                  })
+                })
 
             } catch (error) {
                 await octokit.orgs.createInvitation({
