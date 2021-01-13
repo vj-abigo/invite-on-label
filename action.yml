@@ -1,5 +1,5 @@
-name: 'invite-on-issue'
-description: 'Send invitation based on issue'
+name: invite-on-issue
+description: Send invitation based on issue
 inputs:
   organization:
     description: Name of the organization to which you would like to invite contributors.
@@ -8,5 +8,5 @@ inputs:
     description: Name of the label
     required: true
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: node12
+  main: index.js
