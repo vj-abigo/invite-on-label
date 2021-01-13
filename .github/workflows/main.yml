@@ -13,6 +13,6 @@ jobs:
         uses: ./
         with:
           organization: EddieJaoudeCommunity
-          label: invite me to the organisation
+          label: invite me
         env:
            ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
