@@ -3,11 +3,9 @@ const github = require('@actions/github');
 
 const main = async () => {
     try {
-        const ACCESS_TOKEN = core.getInput('ACCESS_TOKEN');
-
+        const { ACCESS_TOKEN } = process.env
         if (!ACCESS_TOKEN)
             return core.setFailed('ENV required and not supplied: ACCESS_TOKEN')
-
 
         const octokit = github.getOctokit(ACCESS_TOKEN)
 
