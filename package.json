@@ -42,9 +42,10 @@
     }
   },
   "lint-staged": {
-    "index.js": [
+    "*.{js,ts}": [
       "npx prettier --write",
-      "eslint *.js --fix-dry-run"
+      "eslint *.js --fix-dry-run",
+      "git add"
     ]
   }
 }
