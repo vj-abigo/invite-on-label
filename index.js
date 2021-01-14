@@ -19,21 +19,20 @@ const main = async () => {
     const comment = core.getInput('comment')
 
     console.log(payload)
-    return;
 
-    if (currentLabel === label) {
-      try {
-        await octokit.orgs.checkMembership({
-          org,
-          username: payload.issue.user.login,
-        });
-      } catch (error) {
-        await octokit.orgs.createInvitation({
-          org,
-          invitee_id: inviteeId,
-        });
-      }
-    }
+    // if (currentLabel === label) {
+    //   try {
+    //     await octokit.orgs.checkMembership({
+    //       org,
+    //       username: payload.issue.user.login,
+    //     });
+    //   } catch (error) {
+    //     await octokit.orgs.createInvitation({
+    //       org,
+    //       invitee_id: inviteeId,
+    //     });
+    //   }
+    // }
   } catch (error) {
     return core.setFailed(error.message);
   }
