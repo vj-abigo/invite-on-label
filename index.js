@@ -19,6 +19,7 @@ const main = async () => {
     const comment = core.getInput('comment')
 
     console.log(payload)
+    return;
 
     if (currentLabel === label) {
       try {
