@@ -33,6 +33,6 @@ const main = async () => {
   } catch (error) {
     return core.setFailed(error.message);
   }
-  return core.setOutput('Invitation sent successfully 🎉');
+  return core.setOutput('Invitation sent successfully 🎉🎉');
 };
 main();
