@@ -3,12 +3,12 @@ const github = require('@actions/github');
 
 const main = async () => {
   try {
-    // const { ACCESS_TOKEN } = process.env;
-    // if (!ACCESS_TOKEN) {
-    //   return core.setFailed('ENV required and not supplied: ACCESS_TOKEN');
-    // }
+    const { ACCESS_TOKEN } = process.env;
+    if (!ACCESS_TOKEN) {
+      return core.setFailed('ENV required and not supplied: ACCESS_TOKEN');
+    }
 
-    // const octokit = github.getOctokit(ACCESS_TOKEN);
+    const octokit = github.getOctokit(ACCESS_TOKEN);
 
     const { payload } = github.context;
     const inviteeId = payload.issue.user.id;
@@ -18,21 +18,38 @@ const main = async () => {
     const label = core.getInput('label', { required: true });
     const comment = core.getInput('comment')
 
-    console.log(payload)
+    const defaultComment = 'Invitation sent for the GitHub Organisation. Welcome to the community'
 
-    // if (currentLabel === label) {
-    //   try {
-    //     await octokit.orgs.checkMembership({
-    //       org,
-    //       username: payload.issue.user.login,
-    //     });
-    //   } catch (error) {
-    //     await octokit.orgs.createInvitation({
-    //       org,
-    //       invitee_id: inviteeId,
-    //     });
-    //   }
-    // }
+
+    if (currentLabel === label) {
+      try {
+        await octokit.orgs.checkMembership({
+          org,
+          username: payload.issue.user.login,
+        });
+      } catch (error) {
+        await octokit.orgs.createInvitation({
+          org,
+          invitee_id: inviteeId,
+        });
+        if (comment) {
+          await octokit.issues.createComment({
+            owner: payload.repository.owner.login,
+            repo: payload.repository.name,
+            issue_number: payload.issue.number,
+            body: comment
+          })
+        } else {
+          await octokit.issues.createComment({
+            owner: payload.repository.owner.login,
+            repo: payload.repository.name,
+            issue_number: payload.issue.number,
+            body: defaultComment
+          })
+        }
+
+      }
+    }
   } catch (error) {
     return core.setFailed(error.message);
   }
