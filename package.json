@@ -32,13 +32,13 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-import": "^2.22.1",
-    "husky": "^4.3.7",
+    "husky": "^5.0.6",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo 'I ran'"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {

@@ -16,6 +16,9 @@ const main = async () => {
 
     const org = core.getInput('organization', { required: true });
     const label = core.getInput('label', { required: true });
+    const comment = core.getInput('comment')
+
+    console.log(payload)
 
     if (currentLabel === label) {
       try {
