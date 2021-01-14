@@ -25,9 +25,6 @@ const main = async () => {
     const label = core.getInput('label', { required: true });
     const comment = core.getInput('comment')
 
-    const defaultComment = 'Invitation sent for the GitHub Organisation. Welcome to the community'
-
-
     if (currentLabel === label) {
       try {
         await octokit.orgs.checkMembership({
@@ -39,21 +36,13 @@ const main = async () => {
           org,
           invitee_id: inviteeId,
         });
-        if (comment) {
-          await octokit.issues.createComment({
-            owner: payload.repository.owner.login,
-            repo: payload.repository.name,
-            issue_number: payload.issue.number,
-            body: comment
-          })
-        } else {
-          await octokit.issues.createComment({
-            owner: payload.repository.owner.login,
-            repo: payload.repository.name,
-            issue_number: payload.issue.number,
-            body: defaultComment
-          })
-        }
+
+        await octokit.issues.createComment({
+          owner: payload.repository.owner.login,
+          repo: payload.repository.name,
+          issue_number: payload.issue.number,
+          body: comment
+        })
 
       }
     }
