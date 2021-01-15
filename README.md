@@ -31,4 +31,4 @@ jobs:
 
 > Default comment: `Invitation sent for the GitHub Organisation. Welcome to the community`
 
-**NOTE:** create a [repository secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) called _`ACCESS_TOKEN`_ _(or give it another name, but don't forget to change it in the workflow)_ and as a value provide a GitHub [personal access token](https://github.com/settings/tokens) with the scope of _`admin:org`_, if you want to be able to add comments you will also need _`public_repo`_ .
+**NOTE:** create a [repository secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) called _`ACCESS_TOKEN`_ _(or give it another name, but don't forget to change it in the workflow)_ and as a value provide a GitHub [personal access token](https://github.com/settings/tokens) with the scope of _`admin:org`_
