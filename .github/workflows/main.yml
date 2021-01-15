@@ -14,5 +14,6 @@ jobs:
         with:
           organization: vj-abigo
           label: invite me
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
         env:
-           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}

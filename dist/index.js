@@ -5,24 +5,27 @@ module.exports =
 /***/ 932:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const core = __nccwpck_require__(186);
-const github = __nccwpck_require__(438);
+const core = __nccwpck_require__(186)
+const github = __nccwpck_require__(438)
 
 const main = async () => {
   try {
-    const { ACCESS_TOKEN } = process.env;
+    const { ACCESS_TOKEN } = process.env
+    const repoToken = core.getInput('repo-token', { required: true })
+
     if (!ACCESS_TOKEN) {
-      return core.setFailed('ENV required and not supplied: ACCESS_TOKEN');
+      return core.setFailed('ENV required and not supplied: ACCESS_TOKEN')
     }
 
-    const octokit = github.getOctokit(ACCESS_TOKEN);
+    const octokit = github.getOctokit(ACCESS_TOKEN)
+    const client = github.getOctokit(repoToken)
 
     const { payload } = github.context;
-    const inviteeId = payload.issue.user.id;
-    const currentLabel = payload.label.name;
+    const inviteeId = payload.issue.user.id
+    const currentLabel = payload.label.name
 
-    const org = core.getInput('organization', { required: true });
-    const label = core.getInput('label', { required: true });
+    const org = core.getInput('organization', { required: true })
+    const label = core.getInput('label', { required: true })
     const comment = core.getInput('comment')
 
     if (currentLabel === label) {
@@ -37,7 +40,7 @@ const main = async () => {
           invitee_id: inviteeId,
         });
 
-        await octokit.issues.createComment({
+        await client.issues.createComment({
           owner: payload.repository.owner.login,
           repo: payload.repository.name,
           issue_number: payload.issue.number,
@@ -47,9 +50,9 @@ const main = async () => {
       }
     }
   } catch (error) {
-    return core.setFailed(error.message);
+    return core.setFailed(error.message)
   }
-  return core.setOutput('Invitation sent successfully 🎉🎉');
+  return core.setOutput('Invitation sent successfully 🎉🎉')
 };
 main();
 

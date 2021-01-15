@@ -7,6 +7,9 @@ inputs:
   label:
     description: Name of the label
     required: true
+  repo-token:
+    description: 'GitHub token for repo'
+    required: true
   comment:
     description: A comment which will be posted on the issue.
     required: false
