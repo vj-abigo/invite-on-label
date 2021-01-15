@@ -19,6 +19,7 @@ jobs:
         with:
           organization: EddieJaoudeCommunity
           label: invite me to the organisation
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 ```
