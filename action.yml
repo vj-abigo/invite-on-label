@@ -1,5 +1,9 @@
 name: invite-on-label
 description: Send invitation based on issue
+author: Abishek P.Y
+branding:
+  icon: anchor
+  color: green
 inputs:
   organization:
     description: Name of the organization to which you would like to invite contributors.
