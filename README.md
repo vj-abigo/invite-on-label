@@ -16,12 +16,9 @@ on:
 jobs:
   automate_invite:
     runs-on: ubuntu-latest
-    name: Check for issue label
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Run the local file
-        uses: ./
+      - name: Invite on label
+        uses: vj-abigo/invite-on-label@v1.1
         with:
           organization: EddieJaoudeCommunity
           label: invite me to the organisation
