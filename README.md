@@ -1,4 +1,10 @@
-# Invite-on-label
+
+<p>
+  <h1 align="center">Invite-on-label</h1>
+</p>
+<p align="center">
+  <img align="center" src="https://user-images.githubusercontent.com/43115551/104796715-cededb80-57de-11eb-9a2a-32d8b6732c98.jpg" alt="Demo invitation"/>
+</p>
 
 ## Usage:
 
