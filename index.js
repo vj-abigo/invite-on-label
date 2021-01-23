@@ -39,6 +39,12 @@ const main = async () => {
           issue_number: payload.issue.number,
           body: comment
         })
+        await client.issues.update({
+          owner: payload.repository.owner.login,
+          repo: payload.repository.name,
+          issue_number: payload.issue.number,
+          state: 'closed'
+    })
 
       }
     }
