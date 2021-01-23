@@ -10,14 +10,14 @@ const github = __nccwpck_require__(438);
 
 const main = async () => {
   try {
-    const { ACCESS_TOKEN } = process.env;
+    const { INVITE_TOKEN } = process.env;
     const repoToken = core.getInput('repo-token', { required: true });
 
-    if (!ACCESS_TOKEN) {
-      return core.setFailed('ENV required and not supplied: ACCESS_TOKEN');
+    if (!INVITE_TOKEN) {
+      return core.setFailed('ENV required and not supplied: INVITE_TOKEN');
     }
 
-    const octokit = github.getOctokit(ACCESS_TOKEN);
+    const octokit = github.getOctokit(INVITE_TOKEN);
     const client = github.getOctokit(repoToken);
 
     const { payload } = github.context;
