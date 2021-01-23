@@ -1,13 +1,13 @@
 {
   "name": "invite-on-label",
   "version": "1.0.0",
-  "description": "",
+  "description": "Automate organization invitation based on the label",
   "main": "index.js",
   "scripts": {
     "build": "ncc build index.js",
     "prettier": "prettier \"*.{js,json}\"",
     "format": "npm run prettier -- --write",
-    "lint": "eslint src",
+    "lint": "eslint . --ext .js",
     "lint:fix": "npm run lint -- --fix",
     "validate": "npm run prettier -- --list-different && npm run lint"
   },
@@ -42,12 +42,9 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts}": [
-      "npx prettier --write",
-      "eslint *.js --fix-dry-run",
-      "git add"
-    ],
-    "*.js": "eslint --cache --fix",
-    "*.--write": "prettier --write"
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
