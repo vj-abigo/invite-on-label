@@ -31,20 +31,24 @@ const main = async () => {
         await octokit.orgs.createInvitation({
           org,
           invitee_id: inviteeId,
-        });
+        })        
+        core.info('Invitation sent successfully 🎉🎉')
 
+        core.info('Adding a comment before closing the issue')        
         await client.issues.createComment({
           owner: payload.repository.owner.login,
           repo: payload.repository.name,
           issue_number: payload.issue.number,
           body: comment
         })
+        
+        core.info('Closing the issue')
         await client.issues.update({
           owner: payload.repository.owner.login,
           repo: payload.repository.name,
           issue_number: payload.issue.number,
           state: 'closed'
-    })
+        })
 
       }
     }
