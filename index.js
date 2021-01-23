@@ -9,7 +9,6 @@ const main = async () => {
     if (!INVITE_TOKEN) {
       return core.setFailed('ENV required and not supplied: INVITE_TOKEN');
     }
-
     const octokit = github.getOctokit(INVITE_TOKEN);
     const client = github.getOctokit(repoToken);
 
