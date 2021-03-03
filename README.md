@@ -38,9 +38,7 @@ jobs:
 
 - Replace the `organization` name to put in name of your org, replace the `label` with name of the label with which you want this action to be triggered.
 - Replace `comment` with the message you want the github-actions bot to send after an invite is sent.
-- In order for the workflow to work, you would need a PAT that gives admin access to the org.
-This can be generated in your account settings- `Settings > Developer Settings > Personal Access Tokens > Generate New Access Token`
-Give the following permissions to the token:
+- **NOTE:** create a [repository secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) called _`INVITE_TOKEN`_ _(or give it another name, but don't forget to change it in the workflow)_ and as a value provide a GitHub [personal access token](https://github.com/settings/tokens) with the scope of _`admin:org`_
 
 ![Give admin:org access to the token](https://user-images.githubusercontent.com/43115551/109795252-b450ac80-7c3c-11eb-8de7-5dc5d600f82e.png)
 
