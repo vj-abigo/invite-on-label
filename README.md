@@ -1,12 +1,13 @@
-<p>
-  <h1 align="center">Invite-on-label</h1>
-</p>
-<p align="center">
-  <img align="center" src="https://user-images.githubusercontent.com/43115551/104796715-cededb80-57de-11eb-9a2a-32d8b6732c98.jpg" alt="Demo invitation"/>
-</p>
+# Invite-on-label workflow
 
-## Usage:
+![Screenshot of the invite the bot sends](https://user-images.githubusercontent.com/62864373/109786137-dc3b1280-7c32-11eb-9f10-e0e8ed936d2e.png)
 
+This action allows you to auto-invite people to your org. after they open an issue, with a specific label.
+
+### How to use
+- Go to your repository
+- Create a folder named `.github` and create a `workflows` folder inside it if it doesn't exist.
+- Create a new file named `invitation.yml` with the following contents inside the `workflows` folder:
 ```yml
 on:
   issues:
@@ -19,19 +20,40 @@ jobs:
       - name: Invite on label
         uses: vj-abigo/invite-on-label@v1.2
         with:
-          organization: EddieJaoudeCommunity
-          label: invite me to the organisation
+          organization: GitHub-Org
+          label: invite me to the organization
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          comment: 'Welcome to the Org.'
         env:
           INVITE_TOKEN: ${{ secrets.INVITE_TOKEN }}
-```
+``` 
 
-**_organization_** - _(required)_ name of the organization to which you would like to invite your contributors
+**_organization_** - _(required)_ Name of the organization to which you would like to invite your contributors
 
 **_label_** - _(required)_ Name of the label
 
-**_comment_** - _(optional)_ A comment which will be posted on the issue
+**_comment_** - _(optional)_ A comment which will be posted by github-actions bot after invite is sent.
 
 > Default comment: `Invitation sent for the GitHub Organisation. Welcome to the community`
 
-**NOTE:** create a [repository secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) called _`INVITE_TOKEN`_ _(or give it another name, but don't forget to change it in the workflow)_ and as a value provide a GitHub [personal access token](https://github.com/settings/tokens) with the scope of _`admin:org`_
+- Replace the `organization` name to put in name of your org, replace the `label` with name of the label with which you want this action to be triggered.
+- Replace `comment` with the message you want the github-actions bot to send after an invite is sent.
+- In order for the workflow to work, you would need a PAT that gives admin access to the org.
+This can be generated in your account settings- `Settings > Developer Settings > Personal Access Tokens > Generate New Access Token`
+Give the following permissions to the token:
+
+![Give admin:org access to the token](https://user-images.githubusercontent.com/62864373/109787502-4c966380-7c34-11eb-9523-d1ee7829256e.png)
+
+Copy the generated token and navigate to your org's secrets(`Organization Settings > Secrets`) and create a `New Organization Secret` with the Name as `INVITE_TOKEN` and the value as the token that you copied in the previous step.
+
+### Examples
+- [EddieHub invitation Workflow](https://github.com/EddieHubCommunity/support/blob/main/.github/workflows/invitation.yml)
+
+### Contributing
+Please see [`CONTRIBUTING.md`](./CONTRIBUTING.md) for getting started with the contribution. Make sure that you follow [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md) while contributing and engaging in the discussions. **When contributing, please first discuss the change you wish to make via an issue on this repository before making the actual change.**
+
+#### ToDo-
+- [ ] Better Docs
+- [ ] Fix bugs, if any
+#### Bugs-
+If you feel any difficulty in usage or notice a bug, don't forget to [open a new issue](https://github.com/vj-abigo/invite-on-label/issues/new).
