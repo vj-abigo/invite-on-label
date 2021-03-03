@@ -42,7 +42,7 @@ jobs:
 This can be generated in your account settings- `Settings > Developer Settings > Personal Access Tokens > Generate New Access Token`
 Give the following permissions to the token:
 
-![Give admin:org access to the token](https://user-images.githubusercontent.com/62864373/109787502-4c966380-7c34-11eb-9523-d1ee7829256e.png)
+![Give admin:org access to the token](https://user-images.githubusercontent.com/43115551/109795252-b450ac80-7c3c-11eb-8de7-5dc5d600f82e.png)
 
 Copy the generated token and navigate to your org's secrets(`Organization Settings > Secrets`) and create a `New Organization Secret` with the Name as `INVITE_TOKEN` and the value as the token that you copied in the previous step.
 
