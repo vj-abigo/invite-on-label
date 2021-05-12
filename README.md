@@ -43,6 +43,7 @@ jobs:
 ![Give admin:org access to the token](https://user-images.githubusercontent.com/43115551/109795252-b450ac80-7c3c-11eb-8de7-5dc5d600f82e.png)
 
 Copy the generated token and navigate to your org's secrets(`Organization Settings > Secrets`) and create a `New Organization Secret` with the Name as `INVITE_TOKEN` and the value as the token that you copied in the previous step.
+- You don't worry about the `GITHUB_TOKEN`, It will be given by GitHub
 
 ### Examples
 - [EddieHub invitation Workflow](https://github.com/EddieHubCommunity/support/blob/main/.github/workflows/invitation.yml)
