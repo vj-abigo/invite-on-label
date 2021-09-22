@@ -28,14 +28,6 @@ jobs:
           INVITE_TOKEN: ${{ secrets.INVITE_TOKEN }}
 ``` 
 
-**_organization_** - _(required)_ Name of the organization to which you would like to invite your contributors
-
-**_label_** - _(required)_ Name of the label
-
-**_comment_** - _(optional)_ A comment which will be posted by github-actions bot after invite is sent.
-
-> Default comment: `Invitation sent for the GitHub Organisation. Welcome to the community`
-
 - Replace the `organization` name to put in name of your org, replace the `label` with name of the label with which you want this action to be triggered.
 - Replace `comment` with the message you want the github-actions bot to send after an invite is sent.
 - **NOTE:** create a [repository secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) called _`INVITE_TOKEN`_ _(or give it another name, but don't forget to change it in the workflow)_ and as a value provide a GitHub [personal access token](https://github.com/settings/tokens) with the scope of _`admin:org`_
@@ -44,6 +36,17 @@ jobs:
 
 Copy the generated token and navigate to your org's secrets(`Organization Settings > Secrets`) and create a `New Organization Secret` with the Name as `INVITE_TOKEN` and the value as the token that you copied in the previous step.
 - You don't worry about the `GITHUB_TOKEN`, It will be given by GitHub
+
+### Note:
+
+**_organization_** - _(required)_ Name of the organization to which you would like to invite your contributors
+
+**_label_** - _(required)_ Name of the label
+
+**_comment_** - _(optional)_ A comment which will be posted by github-actions bot after invite is sent.
+
+> Default comment: `Invitation sent for the GitHub Organisation. Welcome to the community`
+
 
 ### Examples
 - [EddieHub invitation Workflow](https://github.com/EddieHubCommunity/support/blob/main/.github/workflows/invitation.yml)
