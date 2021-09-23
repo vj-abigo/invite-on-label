@@ -30,7 +30,7 @@ jobs:
 
 - Replace the `organization` name to put in name of your org, replace the `label` with name of the label with which you want this action to be triggered.
 - Replace `comment` with the message you want the github-actions bot to send after an invite is sent.
-- **NOTE:** create a [personal access token](https://github.com/settings/tokens) called _`INVITE_TOKEN`_ _(or give it another name, but don't forget to change it in the workflow)_  with the scope of _`admin:org`_ and set the expiration date as _`No expiration`_ _(If you don't want to regenerate token again)_ 
+- **NOTE:** create a [personal access token](https://github.com/settings/tokens/new) called _`INVITE_TOKEN`_ _(or give it another name, but don't forget to change it in the workflow)_  with the scope of _`admin:org`_ and set the expiration date as _`No expiration`_ _(If you don't want to regenerate token again)_ 
 
 ![Give admin:org access to the token](https://user-images.githubusercontent.com/43115551/109795252-b450ac80-7c3c-11eb-8de7-5dc5d600f82e.png)
 
