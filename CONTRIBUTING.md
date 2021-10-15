@@ -32,7 +32,7 @@ git remote add upstream https://github.com/vj-abigo/invite-on-label.git
 ```
 git remote -v
 ```
-**6.**To setup the environment in your system run the following commands
+**6.** To setup the environment in your system run the following commands
 ```
 npm install
 ```
