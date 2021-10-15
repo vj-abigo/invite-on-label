@@ -55,8 +55,18 @@ jobs:
 ### Contributing
 Please see [`CONTRIBUTING.md`](./CONTRIBUTING.md) for getting started with the contribution. Make sure that you follow [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md) while contributing and engaging in the discussions. **When contributing, please first discuss the change you wish to make via an issue on this repository before making the actual change.**
 
+
+
 #### ToDo-
 - [ ] Better Docs
 - [ ] Fix bugs, if any
 #### Bugs-
 If you feel any difficulty in usage or notice a bug, don't forget to [open a new issue](https://github.com/vj-abigo/invite-on-label/issues/new).
+
+### Contributors
+
+<a href="https://github.com/vj-abigo/invite-on-label/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=vj-abigo/invite-on-label" />
+</a>
+
+Made with [contributors-img](https://contrib.rocks).
