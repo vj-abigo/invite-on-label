@@ -1,0 +1,33 @@
+name: Feature request
+description: Suggest features, propose improvements, discuss new ideas
+title: "[FEATURE] <description>"
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: feature
+    attributes:
+      label: 💡 Feature
+      description: A summary of what you'd like to see added or changed
+    validations:
+      required: true
+  - type: textarea
+    id: usecases
+    attributes:
+      label: Use Cases
+      description: |
+        What are possible use cases for your suggested feature?
+    validations:
+      required: false
+  - type: textarea
+    id: relatedproblems
+    attributes:
+      label: ❌ Related Problems
+      description: |
+        Is your Request related to a problem?
+        Link issues and PR's if any
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        Feel free to check out other cool repositories of the organisation [here](https://github.com/vj-abigo). Thank you.
