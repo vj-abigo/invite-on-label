@@ -19,6 +19,7 @@ const main = async () => {
     const org = core.getInput('organization', { required: true });
     const label = core.getInput('label', { required: true });
     const comment = core.getInput('comment');
+    const alreadyAMember = `You are already the member of: ${org}`
 
     if (currentLabel === label) {
       try {
@@ -51,6 +52,15 @@ const main = async () => {
       }
     }
   } catch (error) {
+    if(error.message.toString().includes("already a part"))
+      {
+        await client.issues.createComment({
+            owner: payload.repository.owner.login,
+            repo: payload.repository.name,
+            issue_number: payload.issue.number,
+            body: alreadyAMember,
+          });
+      }
     return core.setFailed(error.message);
   }
   return core.setOutput('Invitation sent successfully 🎉🎉');
