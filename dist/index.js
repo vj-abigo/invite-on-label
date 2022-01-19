@@ -61,13 +61,21 @@ const main = async () => {
   } catch (error) {
 
     if (error.message.toString().includes('already a part')) {
+
       await client.issues.createComment({
         owner: payload.repository.owner.login,
         repo: payload.repository.name,
         issue_number: payload.issue.number,
         body: existingMemberMessage,
+      });
+
+      await client.issues.update({
+        owner: payload.repository.owner.login,
+        repo: payload.repository.name,
+        issue_number: payload.issue.number,
         state: 'closed',
       });
+
     }
 
     return core.setFailed(error.message);
