@@ -1,5 +1,5 @@
 name: invite-on-label
-description: Send invitation based on issue
+description: Send invitation based on issue label
 author: Abishek P.Y
 branding:
   icon: anchor
@@ -18,6 +18,10 @@ inputs:
     description: A comment which will be posted on the issue.
     required: false
     default: Invitation sent for the GitHub Organisation. Welcome to the community
+  existingMemberMessage:
+    description: Message for existing organisation members
+    required: false
+    default: You are already the member of our Organisation.
 runs:
   using: node12
   main: dist/index.js

@@ -9,17 +9,20 @@ const core = __nccwpck_require__(186);
 const github = __nccwpck_require__(438);
 
 const main = async () => {
+
+  const repoToken = core.getInput('repo-token', { required: true });
+  const client = github.getOctokit(repoToken);
+  const { payload } = github.context;
+  const existingMemberMessage = core.getInput('existingMemberMessage')
+
   try {
     const { INVITE_TOKEN } = process.env;
-    const repoToken = core.getInput('repo-token', { required: true });
 
     if (!INVITE_TOKEN) {
       return core.setFailed('ENV required and not supplied: INVITE_TOKEN');
     }
     const octokit = github.getOctokit(INVITE_TOKEN);
-    const client = github.getOctokit(repoToken);
 
-    const { payload } = github.context;
     const inviteeId = payload.issue.user.id;
     const currentLabel = payload.label.name;
 
@@ -40,7 +43,6 @@ const main = async () => {
         });
         core.info('Invitation sent successfully 🎉🎉');
 
-        core.info('Adding a comment before closing the issue');
         await client.issues.createComment({
           owner: payload.repository.owner.login,
           repo: payload.repository.name,
@@ -48,7 +50,6 @@ const main = async () => {
           body: comment,
         });
 
-        core.info('Closing the issue');
         await client.issues.update({
           owner: payload.repository.owner.login,
           repo: payload.repository.name,
@@ -58,6 +59,17 @@ const main = async () => {
       }
     }
   } catch (error) {
+
+    if (error.message.toString().includes('already a part')) {
+      await client.issues.createComment({
+        owner: payload.repository.owner.login,
+        repo: payload.repository.name,
+        issue_number: payload.issue.number,
+        body: existingMemberMessage,
+        state: 'closed',
+      });
+    }
+
     return core.setFailed(error.message);
   }
   return core.setOutput('Invitation sent successfully 🎉🎉');
