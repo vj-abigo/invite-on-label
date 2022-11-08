@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Invite on label
-        uses: vj-abigo/invite-on-label@v1.3
+        uses: vj-abigo/invite-on-label@v1.4
         with:
           organization: GitHub-Org
           label: invite me to the organization

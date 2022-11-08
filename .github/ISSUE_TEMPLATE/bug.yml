@@ -1,7 +1,7 @@
 name: Bug Report
 description: Report bugs found while using the project
-title: "[Bug]: "
-labels: ["bug", "triage"]
+title: '[Bug]: '
+labels: ['bug', 'triage']
 assignees:
   - vj-abishek
 body:
@@ -32,10 +32,10 @@ body:
       description: What version of our software are you running?
       options:
         - 1.4 (Default)
-        - 1.3 (Edge)
-        - 1.2 (Edge)
-        - 1.1 (Edge)
-        - 1.0 (Edge)
+        - 1.3
+        - 1.2
+        - 1.1
+        - 1.0
     validations:
       required: true
   - type: textarea
