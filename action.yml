@@ -23,5 +23,5 @@ inputs:
     required: false
     default: You are already a member of our Organisation.
 runs:
-  using: node12
+  using: node16
   main: dist/index.js
