@@ -23,7 +23,14 @@ const main = async () => {
     }
     const octokit = github.getOctokit(INVITE_TOKEN);
 
-    const inviteeId = payload.issue.user.id;
+    // The payload body contains the user.login...
+    const inviteeLogin = payload.issue.body;
+    //  ...which we convert to user.id
+    const {data: userRequest} = await octokit.users.getByUsername({
+      username: inviteeLogin,
+    });
+    const inviteeId = userRequest.id;
+
     const currentLabel = payload.label.name;
 
     const org = core.getInput('organization', { required: true });
@@ -34,7 +41,7 @@ const main = async () => {
       try {
         await octokit.orgs.checkMembership({
           org,
-          username: payload.issue.user.login,
+          username: inviteeLogin,
         });
       } catch (error) {
         await octokit.orgs.createInvitation({
