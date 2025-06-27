@@ -1,27 +1,29 @@
 name: invite-on-label
-description: Send invitation based on issue label
+description: Automatically invite users to your GitHub organization when an issue is labeled.
 author: Abishek P.Y
 branding:
   icon: anchor
   color: green
+
 inputs:
   organization:
     description: Name of the organization to which you would like to invite contributors.
     required: true
   label:
-    description: Name of the label
+    description: Name of the label that triggers the invitation.
     required: true
   repo-token:
-    description: 'GitHub token for repo'
+    description: GitHub token for accessing the repository.
     required: true
   comment:
-    description: A comment which will be posted on the issue.
+    description: Comment to be posted on the issue after sending the invitation.
     required: false
-    default: Invitation sent for the GitHub Organisation. Welcome to the community
+    default: Invitation sent for the GitHub Organization. Welcome to the community!
   existingMemberMessage:
-    description: Message for existing organisation members
+    description: Message to display if the user is already a member of the organization.
     required: false
-    default: You are already a member of our Organisation.
+    default: You are already a member of our organization.
+
 runs:
   using: node16
   main: dist/index.js
